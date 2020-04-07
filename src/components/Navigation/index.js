@@ -7,6 +7,8 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import Button from "react-bootstrap/Button";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -23,6 +25,9 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Services" />
           <NavbarItem path="/feedback" linkText="Guest Book" />
+          <div style={{ padding: ".5rem 1rem" }}>
+            <FiShoppingCart /> <span>1</span> <Button>Check Out</Button>
+          </div>
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
