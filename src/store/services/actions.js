@@ -9,6 +9,7 @@ export const fetchServicesSuccess = (services) => ({
 export const fetchServices = () => {
   return async (dispatch) => {
     const response = await axios.get(`${apiUrl}/services`);
+    console.log("RESPONSE", response);
     dispatch(fetchServicesSuccess(response.data));
   };
 };
