@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchShoppingCardById } from "../../store/shoppingcard/actions";
-import { selectShoppingCard } from "../../store/shoppingcard/selectors";
+import { fetchShoppingCartById } from "../../store/shoppingcart/actions";
+import { selectShoppingCart } from "../../store/shoppingcart/selectors";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import CustomerDetails from "../../components/CustomerDetails";
@@ -9,10 +9,10 @@ import CartItem from "../../components/CardItem";
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const shoppingCard = useSelector(selectShoppingCard);
+  const shoppingCart = useSelector(selectShoppingCart);
 
   useEffect(() => {
-    dispatch(fetchShoppingCardById());
+    dispatch(fetchShoppingCartById());
   }, [dispatch]);
 
   return (
