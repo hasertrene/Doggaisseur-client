@@ -21,7 +21,7 @@ const Home = () => (
 );
 const Other = () => (
   <Jumbotron>
-    <h1>Other</h1>
+    <h1>Guest Book</h1>
   </Jumbotron>
 );
 
@@ -41,7 +41,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/checkout" component={Checkout} />
-        <Route path="/other" component={Other} />
+        <Route path="/feedback" component={Other} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
       </Switch>
