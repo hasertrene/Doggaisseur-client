@@ -1,7 +1,7 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
 
-export const SHOPPINGCARD_DETAILS_FETCHED = "SHOPPINGCART_DETAILS_FETCHED";
+export const SHOPPINGCART_DETAILS_FETCHED = "SHOPPINGCART_DETAILS_FETCHED";
 
 const shoppingCartDetailsFetched = (cart) => ({
   type: SHOPPINGCART_DETAILS_FETCHED,
