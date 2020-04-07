@@ -12,9 +12,9 @@ export default function LoggedIn() {
   return (
     <>
       {/* Cant login yet, so see if it works later */}
-      <Nav.item>
-        <FiShoppingCart /> <span>1</span> <Button>Check Out</Button>
-      </Nav.item>
+      {/* <div style={{ padding: ".5rem 1rem" }}>
+            <FiShoppingCart /> <span>1</span> <Button>Check Out</Button>
+          </div> */}
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.name}</Nav.Item>
       <Button onClick={() => dispatch(logOut())}>Logout</Button>
     </>
