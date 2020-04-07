@@ -8,6 +8,9 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import ServicesPage from "./pages/ServicesPage";
+import Checkout from "./pages/Checkout";
+import Feedback from "./pages/Feedback/index";
+
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -15,9 +18,9 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 
 const Other = () => (
-  <Jumbotron>
-    <h1>Other</h1>
-  </Jumbotron>
+  <div>
+    <Feedback />
+  </div>
 );
 
 function App() {
@@ -35,7 +38,8 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={ServicesPage} />
-        <Route path="/other" component={Other} />
+        <Route path="/checkout" component={Checkout} />
+        <Route path="/feedback" component={Other} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
       </Switch>
