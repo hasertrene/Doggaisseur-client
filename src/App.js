@@ -7,19 +7,16 @@ import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import ServicesPage from "./pages/ServicesPage";
 import Checkout from "./pages/Checkout";
 import Feedback from "./pages/Feedback/index";
+
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 
-const Home = () => (
-  <Jumbotron>
-    <h1>Home</h1>
-  </Jumbotron>
-);
 const Other = () => (
   <div>
     <Feedback />
@@ -40,7 +37,7 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={ServicesPage} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/feedback" component={Other} />
         <Route path="/signup" component={SignUp} />
