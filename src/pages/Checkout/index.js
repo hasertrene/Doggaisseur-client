@@ -21,6 +21,7 @@ export default function Checkout() {
       <Container>
         What's in my cart:
         <CartItem />
+        Total €:
       </Container>
       <Container>
         <CustomerDetails />
