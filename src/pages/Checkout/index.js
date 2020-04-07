@@ -5,7 +5,7 @@ import { selectShoppingCart } from "../../store/shoppingcart/selectors";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import CustomerDetails from "../../components/CustomerDetails";
-import CartItem from "../../components/CardItem";
+import CartItem from "../../components/CartItem";
 
 export default function Checkout() {
   const dispatch = useDispatch();
