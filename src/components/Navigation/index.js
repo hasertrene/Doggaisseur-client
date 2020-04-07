@@ -25,9 +25,6 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Services" />
           <NavbarItem path="/feedback" linkText="Guest Book" />
-          <div style={{ padding: ".5rem 1rem" }}>
-            <FiShoppingCart /> <span>1</span> <Button>Check Out</Button>
-          </div>
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
