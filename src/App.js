@@ -8,6 +8,7 @@ import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
+import Feedback from "./pages/Feedback/index";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -20,9 +21,9 @@ const Home = () => (
   </Jumbotron>
 );
 const Other = () => (
-  <Jumbotron>
-    <h1>Guest Book</h1>
-  </Jumbotron>
+  <div>
+    <Feedback />
+  </div>
 );
 
 function App() {
