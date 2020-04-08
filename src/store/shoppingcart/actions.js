@@ -1,8 +1,11 @@
 import axios from "axios";
 import { apiUrl } from "../../config/constants";
+import { selectCardId } from "./selectors";
 import { selectUser } from "../../store/user/selectors";
 
+
 export const SHOPPINGCART_DETAILS_FETCHED = "SHOPPINGCART_DETAILS_FETCHED";
+export const NEW_CART_ITEM = "NEW_CART_ITEM";
 
 const shoppingCartDetailsFetched = (cart) => ({
   type: SHOPPINGCART_DETAILS_FETCHED,
@@ -18,5 +21,18 @@ export const fetchShoppingCartById = (id) => {
     });
     console.log("WHAT IS CART RESPONSE", response);
     dispatch(shoppingCartDetailsFetched(response.data.items));
+  };
+};
+
+const newCartItem = (service) => ({
+  type: NEW_CART_ITEM,
+  payload: service,
+});
+
+export const addService = (serviceId, service) => {
+  return async (dispatch, getState) => {
+    dispatch(newCartItem(service));
+    const cartId = selectCardId(getState());
+    const response = await axios.patch(`${apiUrl}/${cartId}`, { serviceId });
   };
 };
