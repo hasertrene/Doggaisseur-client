@@ -1,8 +1,15 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { useDispatch, useSelector } from "react-redux";
+
+// import { selectToken } from "../../store/user/selectors";
+import CommentForm from "./CommentForm";
 
 export default function Feedback() {
+  // const token = useSelector(selectToken);
+  // console.log("token", token);
+
   return (
     <Container>
       <h1
@@ -34,71 +41,7 @@ export default function Feedback() {
           }}
         >
           <p>
-            Karen <span style={{ float: "right" }}>15 / 04 / 2019</span>
-          </p>
-          <p>This is great, really amazing!</p>
-        </div>
-        <div
-          style={{
-            border: "2px solid black",
-            width: "70%",
-            float: "right",
-            margin: "1rem",
-            borderRadius: "15px",
-            padding: ".5rem",
-            backgroundColor: "rgba(255,255,255,0.9)",
-          }}
-        >
-          <p>
-            Karen <span style={{ float: "right" }}>15 / 04 / 2019</span>
-          </p>
-          <p>This is great, really amazing!</p>
-        </div>
-        <div
-          style={{
-            border: "2px solid black",
-            width: "70%",
-            float: "right",
-            margin: "1rem",
-            borderRadius: "15px",
-            padding: ".5rem",
-            backgroundColor: "rgba(255,255,255,0.9)",
-          }}
-        >
-          <p>
-            Karen <span style={{ float: "right" }}>15 / 04 / 2019</span>
-          </p>
-          <p>This is great, really amazing!</p>
-        </div>
-        <div
-          style={{
-            border: "2px solid black",
-            width: "70%",
-            float: "right",
-            margin: "1rem",
-            borderRadius: "15px",
-            padding: ".5rem",
-            backgroundColor: "rgba(255,255,255,0.9)",
-          }}
-        >
-          <p>
-            Karen <span style={{ float: "right" }}>15 / 04 / 2019</span>
-          </p>
-          <p>This is great, really amazing!</p>
-        </div>
-        <div
-          style={{
-            border: "2px solid black",
-            width: "70%",
-            float: "right",
-            margin: "1rem",
-            borderRadius: "15px",
-            padding: ".5rem",
-            backgroundColor: "rgba(255,255,255,0.9)",
-          }}
-        >
-          <p>
-            Karen <span style={{ float: "right" }}>15 / 04 / 2019</span>
+            Karen <span style={{ float: "right" }}>time</span>
           </p>
           <p>This is great, really amazing!</p>
         </div>
@@ -110,7 +53,7 @@ export default function Feedback() {
           marginBottom: "2rem",
         }}
       >
-        <textarea
+        {/* <textarea
           style={{
             width: "80%",
             height: "30vh",
@@ -119,7 +62,8 @@ export default function Feedback() {
         />
         <Button variant="outline-success" style={{ marginTop: "-10rem" }}>
           Post comment
-        </Button>
+        </Button> */}
+        <CommentForm />
       </div>
     </Container>
   );
