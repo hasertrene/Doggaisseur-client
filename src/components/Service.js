@@ -12,7 +12,7 @@ export default function Service(props) {
       <br />
       <Button
         variant="success"
-        onClick={() => dispatch(addService(props.id, props.name))}
+        onClick={() => dispatch(addService(props.id, 1))}
       >
         Add to cart
       </Button>
