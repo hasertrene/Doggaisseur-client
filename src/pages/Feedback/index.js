@@ -3,12 +3,12 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 
-// import { selectToken } from "../../store/user/selectors";
 import CommentForm from "./CommentForm";
+import { selectFeedbackDetails } from "../../store/feedback/selectors";
 
 export default function Feedback() {
-  // const token = useSelector(selectToken);
-  // console.log("token", token);
+  const feedbackDetails = useSelector(selectFeedbackDetails);
+  console.log("feedbackdetails", feedbackDetails);
 
   return (
     <Container>
@@ -79,16 +79,6 @@ export default function Feedback() {
           marginBottom: "2rem",
         }}
       >
-        {/* <textarea
-          style={{
-            width: "80%",
-            height: "30vh",
-            marginRight: "2rem",
-          }}
-        />
-        <Button variant="outline-success" style={{ marginTop: "-10rem" }}>
-          Post comment
-        </Button> */}
         <CommentForm />
       </div>
     </Container>

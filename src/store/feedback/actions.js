@@ -1,3 +1,4 @@
+import { apiUrl } from "../../config/constants";
 import axios from "axios";
 
 function postCommentSuccess(comment) {
@@ -7,31 +8,30 @@ function postCommentSuccess(comment) {
   };
 }
 
-export function postCommentThunk(text, radio) {
+export function postCommentThunk(comment, serviceId) {
   return async function (dispatch, getState) {
-    console.log("TEXT IN THUNK", text);
-    console.log("RADIO IN THUNK", radio);
+    // console.log("TEXT IN THUNK", comment);
+    // console.log("RADIO IN THUNK", serviceId);
 
     const state = getState();
-    console.log("STATE IN THUNK", state);
+    // console.log("STATE IN THUNK", state);
 
-    // - we need the token from state
     const token = state.user.token;
 
-    // const response = await axios.post(
-    //   `what is route?`,
-    //   {
-    //     text: text,
-    //     radio: radio
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`
-    //     }
-    //   }
-    // );
+    const response = await axios.post(
+      `${apiUrl}/feedback`,
+      {
+        comment: comment,
+        serviceId: serviceId,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-    // console.log(response);
-    // dispatch(postCommentSuccess(response.data));
+    // console.log("ACTION RESP", response.data);
+    dispatch(postCommentSuccess(response.data.feedback));
   };
 }

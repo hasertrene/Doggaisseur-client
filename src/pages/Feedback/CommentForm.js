@@ -8,24 +8,24 @@ import { postCommentThunk } from "../../store/feedback/actions";
 
 export default function CommentForm() {
   const token = useSelector(selectToken);
-  const [text, setText] = useState("");
-  const [radio, setRadio] = useState("");
+  const [comment, setComment] = useState("");
+  const [serviceId, setServiceId] = useState("");
   const dispatch = useDispatch();
 
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(text, radio);
 
-    dispatch(postCommentThunk(text, radio));
-    // setText("");
-    // setRadio("");
+    dispatch(postCommentThunk(comment, serviceId));
+    setComment("");
+    setServiceId("");
   }
 
   const form = token ? (
     <Form onSubmit={handleSubmit}>
       <Form.Group
-        value={text}
-        onChange={(event) => setText(event.target.value)}
+        value={comment}
+        onChange={(event) => setComment(event.target.value)}
         controlId="exampleForm.ControlTextarea1"
       >
         <Form.Control
@@ -36,26 +36,29 @@ export default function CommentForm() {
           }}
         />
       </Form.Group>
-      <Form.Group value={radio} onChange={(event) => setRadio(event.target.id)}>
+      <Form.Group
+        value={serviceId}
+        onChange={(event) => setServiceId(event.target.id)}
+      >
         <Form.Label>
           <h4>What service did you choose?</h4>
         </Form.Label>
         <Form.Check
           type="radio"
           label="Service 1"
-          id="formHorizontalRadios1"
+          id="11"
           name="formHorizontalRadios"
         />
         <Form.Check
           type="radio"
           label="Service 2"
-          id="formHorizontalRadios2"
+          id="2"
           name="formHorizontalRadios"
         />
         <Form.Check
           type="radio"
           label="Service 3"
-          id="formHorizontalRadios3"
+          id="3"
           name="formHorizontalRadios"
         />
       </Form.Group>
