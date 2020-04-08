@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 
 import CommentForm from "./CommentForm";
-import { selectFeedbackDetails } from "../../store/feedback/selectors";
+import { selectComments } from "../../store/feedback/selectors";
+import { fetchComments } from "../../store/feedback/actions";
+import { fetchServices } from "../../store/services/actions";
 
 export default function Feedback() {
-  const feedbackDetails = useSelector(selectFeedbackDetails);
-  console.log("feedbackdetails", feedbackDetails);
-
+  const dispatch = useDispatch();
+  const comments = useSelector(selectComments);
+  useEffect(() => {
+    dispatch(fetchComments());
+    dispatch(fetchServices());
+  }, [dispatch]);
+  console.log("comments", comments);
   return (
     <Container>
       <h1
@@ -28,7 +34,7 @@ export default function Feedback() {
           border: "1px solid #BCE8BA",
         }}
       >
-        {feedbackDetails.map((comment) => {
+        {comments.map((comment) => {
           const date = new Date(comment.createdAt);
           const dateString = date.toDateString();
 

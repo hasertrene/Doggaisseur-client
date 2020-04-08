@@ -6,13 +6,13 @@ export default function CustomerDetails(props) {
   const [quantity, set_quantity] = useState(props.quantity);
   // const totalPrice = props.price * quantity;
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // function updateQuantity() {
-  //   const increment = props.quantity + 1;
-  //   console.log("what is increment", increment);
-  //   dispatch(increment);
-  // }
+  function updateQuantity() {
+    const increment = props.quantity + 1;
+    console.log("what is increment", increment);
+    dispatch(increment);
+  }
 
   return (
     <div className="card" style={{ width: "18rem" }}>
