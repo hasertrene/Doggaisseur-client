@@ -1,7 +1,11 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../store/user/selectors";
 
 export default function CustomerDetails() {
+  const user = useSelector(selectUser);
+  console.log("WHAT IS USER", user);
+
   return (
     <div className="card" style={{ width: "18rem" }}>
       <img
@@ -13,9 +17,9 @@ export default function CustomerDetails() {
         <h5 className="card-title">Customer Details</h5>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">Name: Test Dummy</li>
-        <li className="list-group-item">Address: Street #1</li>
-        <li className="list-group-item">Email: test@test.com</li>
+        <li className="list-group-item">Name: {user.name}</li>
+        <li className="list-group-item">Email: {user.email}</li>
+        <li className="list-group-item">Dog: {user.dog}</li>
       </ul>
     </div>
   );

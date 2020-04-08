@@ -8,12 +8,12 @@ import CustomerDetails from "../../components/CustomerDetails";
 import CartItem from "../../components/CartItem";
 
 export default function Checkout() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const shoppingCart = useSelector(selectShoppingCart);
 
-  useEffect(() => {
-    dispatch(fetchShoppingCartById());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchShoppingCartById());
+  // }, [dispatch]);
 
   return (
     <div>
