@@ -44,12 +44,12 @@ export default function CommentForm() {
           <h4>What service did you choose?</h4>
         </Form.Label>
         <Form.Control as="select">
-          <option>Select service</option>
-          <option value="11">1</option>
-          <option value="12">2</option>
-          <option value="13">3</option>
-          <option value="14">4</option>
-          <option value="15">5</option>
+          <option value="select">Select service</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </Form.Control>
       </Form.Group>
 
