@@ -8,24 +8,24 @@ import { postCommentThunk } from "../../store/feedback/actions";
 
 export default function CommentForm() {
   const token = useSelector(selectToken);
-  const [text, setText] = useState("");
-  const [radio, setRadio] = useState("");
+  const [comment, setComment] = useState("");
+  const [serviceId, setServiceId] = useState("");
   const dispatch = useDispatch();
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.log(text, radio);
+    console.log(comment, serviceId);
 
-    dispatch(postCommentThunk(text, radio));
-    // setText("");
-    // setRadio("");
+    dispatch(postCommentThunk(comment, serviceId));
+    setComment("");
+    setServiceId("");
   }
 
   const form = token ? (
     <Form onSubmit={handleSubmit}>
       <Form.Group
-        value={text}
-        onChange={(event) => setText(event.target.value)}
+        value={comment}
+        onChange={(event) => setComment(event.target.value)}
         controlId="exampleForm.ControlTextarea1"
       >
         <Form.Control
@@ -36,28 +36,21 @@ export default function CommentForm() {
           }}
         />
       </Form.Group>
-      <Form.Group value={radio} onChange={(event) => setRadio(event.target.id)}>
+      <Form.Group
+        value={serviceId}
+        onChange={(event) => setServiceId(event.target.value)}
+      >
         <Form.Label>
           <h4>What service did you choose?</h4>
         </Form.Label>
-        <Form.Check
-          type="radio"
-          label="Service 1"
-          id="formHorizontalRadios1"
-          name="formHorizontalRadios"
-        />
-        <Form.Check
-          type="radio"
-          label="Service 2"
-          id="formHorizontalRadios2"
-          name="formHorizontalRadios"
-        />
-        <Form.Check
-          type="radio"
-          label="Service 3"
-          id="formHorizontalRadios3"
-          name="formHorizontalRadios"
-        />
+        <Form.Control as="select">
+          <option>Select service</option>
+          <option value="11">1</option>
+          <option value="12">2</option>
+          <option value="13">3</option>
+          <option value="14">4</option>
+          <option value="15">5</option>
+        </Form.Control>
       </Form.Group>
 
       <Button
