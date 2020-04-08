@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchShoppingCartById } from "../../store/shoppingcart/actions";
+import {
+  fetchShoppingCartById,
+  orderPlaced,
+} from "../../store/shoppingcart/actions";
 import { selectShoppingCart } from "../../store/shoppingcart/selectors";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -36,7 +39,7 @@ export default function Checkout() {
       <Container>
         <CustomerDetails />
       </Container>
-      <Button>Place order</Button>
+      <Button onClick={() => dispatch(orderPlaced())}>Place order</Button>
     </div>
   );
 }

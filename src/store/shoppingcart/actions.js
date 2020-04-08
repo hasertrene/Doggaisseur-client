@@ -41,3 +41,17 @@ export const addService = (serviceId, quantity) => {
     console.log("RESPONSE", response);
   };
 };
+
+export const orderPlaced = () => {
+  return async (dispatch, getState) => {
+    const { token } = selectUser(getState());
+    const response = await axios.delete(
+      `${apiUrl}/cart`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+      {}
+    );
+    console.log("RESPONSE", response);
+  };
+};
