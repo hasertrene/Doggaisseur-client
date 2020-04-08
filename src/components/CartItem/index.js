@@ -25,7 +25,7 @@ export default function CustomerDetails(props) {
           Quantity:{" "}
           <input
             value={props.quantity}
-            onChange={() => updateQuantity()}
+            // onChange={() => updateQuantity()}
             // {(event) => set_quantity(event.target.value)}
             type="number"
             min="1"
