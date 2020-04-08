@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
 import { postCommentThunk } from "../../store/feedback/actions";
+import { selectServices } from "../../store/services/selectors";
 
 export default function CommentForm() {
   const token = useSelector(selectToken);
   const [comment, setComment] = useState("");
   const [serviceId, setServiceId] = useState("");
   const dispatch = useDispatch();
+  const services = useSelector(selectServices);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -45,11 +47,9 @@ export default function CommentForm() {
         </Form.Label>
         <Form.Control as="select">
           <option>Select service</option>
-          <option value="11">1</option>
-          <option value="12">2</option>
-          <option value="13">3</option>
-          <option value="14">4</option>
-          <option value="15">5</option>
+          {services.map((service) => (
+            <option value={service.id}>{service.name}</option>
+          ))}
         </Form.Control>
       </Form.Group>
 
