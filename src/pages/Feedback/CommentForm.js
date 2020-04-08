@@ -14,7 +14,7 @@ export default function CommentForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // console.log(text, radio);
+    console.log(comment, serviceId);
 
     dispatch(postCommentThunk(comment, serviceId));
     setComment("");
@@ -38,29 +38,19 @@ export default function CommentForm() {
       </Form.Group>
       <Form.Group
         value={serviceId}
-        onChange={(event) => setServiceId(event.target.id)}
+        onChange={(event) => setServiceId(event.target.value)}
       >
         <Form.Label>
           <h4>What service did you choose?</h4>
         </Form.Label>
-        <Form.Check
-          type="radio"
-          label="Service 1"
-          id="11"
-          name="formHorizontalRadios"
-        />
-        <Form.Check
-          type="radio"
-          label="Service 2"
-          id="2"
-          name="formHorizontalRadios"
-        />
-        <Form.Check
-          type="radio"
-          label="Service 3"
-          id="3"
-          name="formHorizontalRadios"
-        />
+        <Form.Control as="select">
+          <option>Select service</option>
+          <option value="11">1</option>
+          <option value="12">2</option>
+          <option value="13">3</option>
+          <option value="14">4</option>
+          <option value="15">5</option>
+        </Form.Control>
       </Form.Group>
 
       <Button
