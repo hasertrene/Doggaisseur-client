@@ -27,6 +27,7 @@ export default function Checkout() {
               service={cart.service.name}
               price={cart.service.price}
               image={cart.service.imageUrl}
+              quantity={cart.quantity}
             />
           );
         })}
