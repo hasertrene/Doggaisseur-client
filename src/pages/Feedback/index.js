@@ -28,7 +28,33 @@ export default function Feedback() {
           border: "1px solid #BCE8BA",
         }}
       >
-        {/* leave only 1 div so map over. Its just so we all see what the end product will look like :) */}
+        {/* postDetails is a state */}
+        {/* {postDetails.comments.map(comment => {
+        const date = new Date(comment.createdAt);
+        const dateString = date.toDateString();
+
+        return (
+          <div
+            key={comment.id}
+            style={{
+            border: "2px solid black",
+            width: "70%",
+            float: "right",
+            margin: "1rem",
+            borderRadius: "15px",
+            padding: ".5rem",
+            backgroundColor: "rgba(255,255,255,0.9)",
+          }}
+          >
+              <p>
+                {comment.developer.name} <span style={{ float: "right" }}>{dateString}</span>
+              </p>
+              <p style={{ fontSize: "1.2rem", padding: "1rem" }}>
+                {comment.text}
+              </p>
+          </div>
+        );
+      })} */}
         <div
           style={{
             border: "2px solid black",
