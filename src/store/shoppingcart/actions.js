@@ -3,7 +3,6 @@ import { apiUrl } from "../../config/constants";
 import { selectCardId } from "./selectors";
 import { selectUser } from "../../store/user/selectors";
 
-
 export const SHOPPINGCART_DETAILS_FETCHED = "SHOPPINGCART_DETAILS_FETCHED";
 export const NEW_CART_ITEM = "NEW_CART_ITEM";
 
@@ -29,10 +28,16 @@ const newCartItem = (service) => ({
   payload: service,
 });
 
-export const addService = (serviceId, service) => {
+export const addService = (serviceId, quantity) => {
   return async (dispatch, getState) => {
-    dispatch(newCartItem(service));
-    const cartId = selectCardId(getState());
-    const response = await axios.patch(`${apiUrl}/${cartId}`, { serviceId });
+    const { token } = selectUser(getState());
+    const response = await axios.post(
+      `${apiUrl}/cart`,
+      { quantity, serviceId },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    console.log("RESPONSE", response);
   };
 };
