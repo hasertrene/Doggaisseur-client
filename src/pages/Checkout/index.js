@@ -24,8 +24,9 @@ export default function Checkout() {
           return (
             <CartItem
               key={cart.id}
-              service={cart.serviceId}
-              quantity={cart.quantity}
+              service={cart.service.name}
+              price={cart.service.price}
+              image={cart.service.imageUrl}
             />
           );
         })}
