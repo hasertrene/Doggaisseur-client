@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchShoppingCartById } from "../../store/shoppingcart/actions";
 import { selectShoppingCart } from "../../store/shoppingcart/selectors";
@@ -20,7 +20,16 @@ export default function Checkout() {
       <h1>Checkout Page, awesome!</h1>
       <Container>
         What's in my cart:
-        <CartItem />
+        {shoppingCart.map((cart) => {
+          return (
+            <CartItem
+              key={cart.id}
+              service={cart.service.name}
+              price={cart.service.price}
+              image={cart.service.imageUrl}
+            />
+          );
+        })}
         Total €:
       </Container>
       <Container>
