@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
-import { postCommentThunk } from "../../store/comments/actions";
+import { postCommentThunk } from "../../store/feedback/actions";
 
 export default function CommentForm() {
   const token = useSelector(selectToken);
