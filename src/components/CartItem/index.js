@@ -37,7 +37,7 @@ export default function CustomerDetails(props) {
           />
         </li>
         <li className="list-group-item">Price €: {totalPrice}</li>
-        <li className="list-group-item">Schedule the service:</li>
+        <li className="list-group-item">Schedule the service 24/7</li>
         <DateTimePicker onChange={(date) => handleTime(date)} value={date} />
       </ul>
     </div>
