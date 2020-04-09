@@ -42,6 +42,16 @@ export default function Homepage() {
         Check out our services or leave us some feedback! We love to hear back
         from you and meet your furry friend soon!
       </div>
+
+      <div style={{ textAlign: "center" }}>
+        <p>
+          Need more information, please visit{" "}
+          <a href="https://www.youtube.com/watch?v=ah6fmNEtXFI" target="_blank">
+            this
+          </a>{" "}
+          page
+        </p>
+      </div>
     </div>
   );
 }
