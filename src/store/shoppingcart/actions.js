@@ -19,7 +19,7 @@ export const fetchShoppingCartById = () => {
     const response = await axios.get(`${apiUrl}/cart`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log("WHAT IS CART RESPONSE", response);
+    // console.log("WHAT IS CART RESPONSE", response);
     dispatch(shoppingCartDetailsFetched(response.data.items));
   };
 };

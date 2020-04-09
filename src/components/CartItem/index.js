@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 
 export default function CustomerDetails(props) {
   const [quantity, set_quantity] = useState(props.quantity);
-  // const totalPrice = props.price * quantity;
+  const totalPrice = props.price * quantity;
 
   const dispatch = useDispatch();
 
@@ -24,14 +24,13 @@ export default function CustomerDetails(props) {
         <li className="list-group-item">
           Quantity:{" "}
           <input
-            value={props.quantity}
-            // onChange={() => updateQuantity()}
-            // {(event) => set_quantity(event.target.value)}
+            value={quantity}
+            onChange={(event) => set_quantity(event.target.value)}
             type="number"
             min="1"
           />
         </li>
-        <li className="list-group-item">Price €: {props.price}</li>
+        <li className="list-group-item">Price €: {totalPrice}</li>
       </ul>
     </div>
   );
