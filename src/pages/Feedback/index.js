@@ -75,11 +75,14 @@ export default function Feedback() {
               }}
             >
               <p>
+
                 user: {!comment.user ? user.name : comment.user.name}{" "}
                 <span style={{ float: "right" }}>{dateString}</span>
               </p>
-              <p>Service: {comment.serviceId}</p>
-              <p style={{ padding: "1rem" }}>{comment.comment}</p>
+              <p>
+                Service: <strong>{comment.serviceId}</strong>
+              </p>
+              <p style={{ padding: "0.5rem" }}>{comment.comment}</p>
             </div>
           );
         })}

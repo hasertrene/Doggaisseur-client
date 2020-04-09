@@ -14,16 +14,16 @@ export default function Navigation() {
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg" style={{ backgroundColor: "rgba(239,255,222, 0.6)" }}>
       <Navbar.Brand as={NavLink} to="/">
-        <span role="img" aria-label="dog">
-          🐕
+        <span role="img" aria-label="dog" style={{ fontSize: "1.5rem" }}>
+          🐶
         </span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Services" />
+          <NavbarItem path="/services" linkText="Services" />
           <NavbarItem path="/feedback" linkText="Guest Book" />
           {loginLogoutControls}
         </Nav>
