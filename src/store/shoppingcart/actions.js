@@ -19,7 +19,7 @@ export const fetchShoppingCartById = () => {
     const response = await axios.get(`${apiUrl}/cart`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    // console.log("WHAT IS CART RESPONSE", response);
+    // console.log("CART RESPONSE", response);
     dispatch(shoppingCartDetailsFetched(response.data.items));
   };
 };
@@ -80,7 +80,6 @@ export const changeQuantity = (id, quantity) => {
       },
       {}
     );
-    console.log("RESPONSE", response);
-    dispatch(updateQuantity(response.data.items));
+    console.log("RESPONSE", response.data.item);
   };
 };

@@ -17,7 +17,11 @@ export default function Checkout() {
   const [order, setOrder] = useState("");
   const dispatch = useDispatch();
   const shoppingCart = useSelector(selectShoppingCart);
-  const totalAmount = useSelector(selectTotalAmount);
+  // const [totaal, setTotaal] = useState(0)
+
+  const totaal = shoppingCart
+  .map((cart) => cart.service.price * cart.quantity)
+  .reduce((a, b) => a + b, 0);
 
   useEffect(() => {
     dispatch(fetchShoppingCartById());
@@ -38,7 +42,7 @@ export default function Checkout() {
               margin: "1rem",
             }}
           >
-            <h3>Total €: {totalAmount}</h3>
+            <h3>Total €: {totaal}</h3>
             <Button onClick={placeOrder}>Place order and pay cash later</Button>
           </div>
         </div>
@@ -57,10 +61,11 @@ export default function Checkout() {
                     <CartItem
                       key={cart.id}
                       id={cart.id}
-                      service={cart.service.name}
+                      service={cart.service}
                       price={cart.service.price}
                       image={cart.service.imageUrl}
                       quantity={cart.quantity}
+                      
                     />
                   </div>
                 </div>
