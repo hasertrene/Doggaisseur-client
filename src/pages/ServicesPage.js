@@ -8,7 +8,8 @@ import { selectServices } from "../store/services/selectors";
 
 export default function ServicesPage() {
   const services = useSelector(selectServices);
-
+  const [order, setOrder] = useState(services);
+  console.log("order", order);
   const categories = [
     ...new Set(services.map((service) => service.category.name)),
   ];
@@ -29,6 +30,7 @@ export default function ServicesPage() {
     Hostel: true,
     "Special treatment": true,
   });
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchServices());
@@ -46,6 +48,8 @@ export default function ServicesPage() {
       : setFilters(filters.filter((filter) => filter !== event.target.name));
   };
 
+  const sortHigher = services.sort((b, a) => a.price - b.price);
+  const sortLower = services.sort((a, b) => a.price - b.price);
   return (
     <>
       <h1></h1>
@@ -68,6 +72,15 @@ export default function ServicesPage() {
                     </label>
                   </form>
                 ))}
+                <br />
+                <label for="cars">Order by price: </label>
+                <select id="prices">
+                  <option value="select">select</option>
+                  <option value="higher">Higher to lower</option>
+                  <option value="lower" onChange={() => setOrder(sortLower)}>
+                    Lower to higher
+                  </option>
+                </select>
               </Jumbotron>
             </div>
           </div>

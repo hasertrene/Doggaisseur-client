@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Jumbotron, Button } from "react-bootstrap";
 import { addService } from "../store/shoppingcart/actions";
+import { fetchShoppingCartById } from "../store/shoppingcart/actions";
 
 export default function Service(props) {
   const [select, setSelect] = useState("Add to cart");
@@ -9,6 +10,7 @@ export default function Service(props) {
 
   const handleClick = () => {
     dispatch(addService(props.id, 1));
+    dispatch(fetchShoppingCartById());
     setSelect("Added to cart");
   };
   return (
