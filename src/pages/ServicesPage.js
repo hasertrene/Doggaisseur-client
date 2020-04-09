@@ -7,10 +7,29 @@ import { fetchServices } from "../store/services/actions";
 import { selectServices } from "../store/services/selectors";
 
 export default function ServicesPage() {
-  const [filters, setFilters] = useState([]);
-  const [isChecked, setChecked] = useState({});
-  const dispatch = useDispatch();
   const services = useSelector(selectServices);
+
+  const categories = [
+    ...new Set(services.map((service) => service.category.name)),
+  ];
+  //console.log("categories", categories);
+  const [filters, setFilters] = useState([
+    "Cleaning",
+    "Exercise",
+    "School",
+    "Leisure",
+    "Hostel",
+    "Special treatment",
+  ]);
+  const [isChecked, setChecked] = useState({
+    Cleaning: true,
+    Exercise: true,
+    School: true,
+    Leisure: true,
+    Hostel: true,
+    "Special treatment": true,
+  });
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
@@ -19,9 +38,6 @@ export default function ServicesPage() {
     filters.includes(service.category.name)
   );
   //console.log("filtered services", filterServices);
-  const categories = [
-    ...new Set(services.map((service) => service.category.name)),
-  ];
 
   const handleChange = (event) => {
     setChecked({ ...isChecked, [event.target.name]: event.target.checked });
@@ -36,11 +52,11 @@ export default function ServicesPage() {
       <div class="container">
         <div class="row">
           <div class="col-sm-4">
-            <div class="position-fixed">
+            <div className="position-fixed">
               <Jumbotron>
                 <h3>Choose category:</h3>
                 {categories.map((category) => (
-                  <form>
+                  <form key={category.id}>
                     <label>
                       {category}{" "}
                       <input
