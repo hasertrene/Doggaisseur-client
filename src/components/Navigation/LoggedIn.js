@@ -23,10 +23,14 @@ export default function LoggedIn() {
     <>
       <div style={{ padding: ".5rem 1rem" }}>
         <FiShoppingCart /> <span>{cartItems.length}</span>{" "}
-        <Button onClick={() => history.push("/checkout")}>Check Out</Button>
+        <Button variant="success" onClick={() => history.push("/checkout")}>
+          Check Out
+        </Button>
       </div>
       <Nav.Item style={{ padding: ".5rem 1rem" }}>Hi, {user.name}</Nav.Item>
-      <Button onClick={() => dispatch(logOut())}>Logout</Button>
+      <Button variant="success" onClick={() => dispatch(logOut())}>
+        Logout
+      </Button>
     </>
   );
 }
