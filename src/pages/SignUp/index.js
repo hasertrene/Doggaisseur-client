@@ -12,6 +12,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [dog, setDog] = useState("");
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -25,11 +26,12 @@ export default function SignUp() {
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(signUp(name, email, password));
+    dispatch(signUp(name, email, password, dog));
 
     setEmail("");
     setPassword("");
     setName("");
+    setDog("")
   }
 
   return (
@@ -45,6 +47,19 @@ export default function SignUp() {
             placeholder="Enter name"
             required
           />
+        </Form.Group>
+        <Form.Group controlId="formBasicDog">
+          <Form.Label>Dog</Form.Label>
+          <Form.Control
+            value={dog}
+            onChange={event => setDog(event.target.value)}
+            type="text"
+            placeholder="Your dog's name, race, tricks..."
+            
+          />
+          <Form.Text className="text-muted">
+          Tell us something about your dog!
+          </Form.Text>
         </Form.Group>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -70,6 +85,7 @@ export default function SignUp() {
             required
           />
         </Form.Group>
+
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
             Sign up
