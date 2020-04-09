@@ -61,3 +61,26 @@ export const orderPlaced = () => {
     dispatch(clearShoppingCart());
   };
 };
+
+const updateQuantity = (cart)=> ({
+  type: "UPDATE_QUANTITY",
+  payload: cart,
+});
+
+export const changeQuantity = (id, quantity) => {
+  return async (dispatch, getState) => {
+    const { token } = selectUser(getState());
+    const response = await axios.patch(
+      `${apiUrl}/cart/${id}`,
+      {
+        quantity: quantity
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+      {}
+    );
+    console.log("RESPONSE", response);
+    dispatch(updateQuantity(response.data.items));
+  };
+};

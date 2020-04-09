@@ -10,6 +10,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SHOPPINGCART_DETAILS_FETCHED:
       return [...action.payload];
+      case "UPDATE_QUANTITY":
+        return [...state, action.payload];
     case NEW_CART_ITEM:
       return [...state, action.payload];
     case CLEAR_SHOPPING_CART:

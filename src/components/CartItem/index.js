@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 import DateTimePicker from "react-datetime-picker";
+import {changeQuantity} from '../../store/shoppingcart/actions'
 
 export default function CustomerDetails(props) {
   const [quantity, set_quantity] = useState(props.quantity);
   const totalPrice = props.price * quantity;
+  const [price, set_price] = useState(totalPrice)
   const dispatch = useDispatch();
 
   const [date, setDate] = useState(new Date());
@@ -14,11 +16,15 @@ export default function CustomerDetails(props) {
     console.log(event);
   };
 
-  function updateQuantity() {
-    const increment = props.quantity + 1;
-    console.log("what is increment", increment);
-    dispatch(increment);
+  function updateQuantity(event) {
+    set_quantity(event.target.value)
+    set_price(event.target.value * props.price)
+    dispatch(changeQuantity(props.key, quantity));
   }
+
+useEffect(() => {
+  
+}, [dispatch])
 
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -31,12 +37,12 @@ export default function CustomerDetails(props) {
           Quantity:{" "}
           <input
             value={quantity}
-            onChange={(event) => set_quantity(event.target.value)}
+            onChange={(event) => updateQuantity(event)}
             type="number"
             min="1"
           />
         </li>
-        <li className="list-group-item">Price €: {totalPrice}</li>
+        <li className="list-group-item">Price €: {price}</li>
         <li className="list-group-item">Schedule the service 24/7</li>
         <DateTimePicker onChange={(date) => handleTime(date)} value={date} />
       </ul>

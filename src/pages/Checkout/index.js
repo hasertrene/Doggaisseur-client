@@ -56,6 +56,7 @@ export default function Checkout() {
                   >
                     <CartItem
                       key={cart.id}
+                      id={cart.id}
                       service={cart.service.name}
                       price={cart.service.price}
                       image={cart.service.imageUrl}
