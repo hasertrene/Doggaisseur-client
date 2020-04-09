@@ -11,13 +11,8 @@ function postCommentSuccess(comment) {
 export function postCommentThunk(comment, serviceId) {
   return async function (dispatch, getState) {
     console.log("TEXT IN THUNK", comment);
-    // console.log("RADIO IN THUNK", serviceId);
-
     const state = getState();
-    // console.log("STATE IN THUNK", state);
-
     const token = state.user.token;
-
     const response = await axios.post(
       `${apiUrl}/feedback`,
       {
@@ -31,7 +26,7 @@ export function postCommentThunk(comment, serviceId) {
       }
     );
 
-    // console.log("ACTION RESP", response.data);
+    console.log("POST COMMENT SUCCESS", response.data.feedback);
     dispatch(postCommentSuccess(response.data.feedback));
   };
 }
