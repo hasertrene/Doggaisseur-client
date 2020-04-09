@@ -75,7 +75,7 @@ export default function Feedback() {
               }}
             >
               <p>
-                user: {comment.user.name}{" "}
+                user: {!comment.user ? user.name : comment.user.name}{" "}
                 <span style={{ float: "right" }}>{dateString}</span>
               </p>
               <p>Service: {comment.serviceId}</p>
