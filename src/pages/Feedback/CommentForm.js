@@ -13,6 +13,7 @@ export default function CommentForm() {
   const [serviceId, setServiceId] = useState("");
   const dispatch = useDispatch();
   const services = useSelector(selectServices);
+  // console.log("services", services);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -32,33 +33,28 @@ export default function CommentForm() {
       >
         <Form.Control
           as="textarea"
+          value={comment}
           style={{
             width: "80%",
             height: "30vh",
           }}
         />
       </Form.Group>
-      <Form.Group
-        value={serviceId}
-        onChange={(event) => setServiceId(event.target.value)}
-      >
+      <Form.Group onChange={(event) => setServiceId(event.target.value)}>
         <Form.Label>
           <h4>What service did you choose?</h4>
         </Form.Label>
-        <Form.Control as="select">
+        <Form.Control as="select" value={serviceId}>
           <option>Select service</option>
           {services.map((service) => (
-            <option value={service.id}>{service.name}</option>
+            <option value={service.id} name={service.name}>
+              {service.name}
+            </option>
           ))}
-
         </Form.Control>
       </Form.Group>
 
-      <Button
-        variant="outline-success"
-        // style={{ marginTop: "-10rem" }}
-        type="submit"
-      >
+      <Button variant="outline-success" type="submit">
         Post Comment
       </Button>
     </Form>

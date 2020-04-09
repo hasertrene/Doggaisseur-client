@@ -8,14 +8,25 @@ import { selectComments } from "../../store/feedback/selectors";
 import { fetchComments } from "../../store/feedback/actions";
 import { fetchServices } from "../../store/services/actions";
 
+import { selectServices } from "../../store/services/selectors";
+import { selectUser } from "../../store/user/selectors";
+
 export default function Feedback() {
   const dispatch = useDispatch();
   const comments = useSelector(selectComments);
+
+  const services = useSelector(selectServices);
+  // console.log("services in index", services);
+
+  const user = useSelector(selectUser);
+  // console.log("users", user);
+
   useEffect(() => {
     dispatch(fetchComments());
     dispatch(fetchServices());
   }, [dispatch]);
-  console.log("comments", comments);
+  // console.log("comments", comments);
+
   return (
     <Container>
       <h1
@@ -38,6 +49,18 @@ export default function Feedback() {
           const date = new Date(comment.createdAt);
           const dateString = date.toDateString();
 
+          services.map((service) => {
+            if (service.id === comment.serviceId) {
+              comment.serviceId = service.name;
+              return service.name;
+            }
+          });
+
+          // if (user.id === comment.userId) {
+          //   comment.userId = user.name;
+          //   return user.name;
+          // }
+
           return (
             <div
               key={comment.id}
@@ -55,27 +78,11 @@ export default function Feedback() {
                 user: {comment.userId}{" "}
                 <span style={{ float: "right" }}>{dateString}</span>
               </p>
+              <p>Service: {comment.serviceId}</p>
               <p style={{ padding: "1rem" }}>{comment.comment}</p>
             </div>
           );
         })}
-
-        <div
-          style={{
-            border: "2px solid black",
-            width: "70%",
-            float: "right",
-            margin: "1rem",
-            borderRadius: "15px",
-            padding: ".5rem",
-            backgroundColor: "rgba(255,255,255,0.9)",
-          }}
-        >
-          <p>
-            Karen <span style={{ float: "right" }}>time</span>
-          </p>
-          <p>This is great, really amazing!</p>
-        </div>
       </div>
 
       <div
