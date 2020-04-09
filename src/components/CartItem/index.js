@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
+import DateTimePicker from "react-datetime-picker";
 
 export default function CustomerDetails(props) {
   const [quantity, set_quantity] = useState(props.quantity);
   const totalPrice = props.price * quantity;
-
   const dispatch = useDispatch();
+
+  const [date, setDate] = useState(new Date());
+  const handleTime = (event) => {
+    setDate(event);
+    console.log(event);
+  };
 
   function updateQuantity() {
     const increment = props.quantity + 1;
@@ -31,6 +37,8 @@ export default function CustomerDetails(props) {
           />
         </li>
         <li className="list-group-item">Price €: {totalPrice}</li>
+        <li className="list-group-item">Schedule the service 24/7</li>
+        <DateTimePicker onChange={(date) => handleTime(date)} value={date} />
       </ul>
     </div>
   );

@@ -29,31 +29,45 @@ export default function Checkout() {
   };
 
   return (
-    <div>
-      <h1>What's in my cart:</h1>
-      <Container>
-        <div class="row">
-          {shoppingCart.map((cart) => {
-            return (
-              <div class="col-sm-4">
-                <CartItem
-                  key={cart.id}
-                  service={cart.service.name}
-                  price={cart.service.price}
-                  image={cart.service.imageUrl}
-                  quantity={cart.quantity}
-                />
-              </div>
-            );
-          })}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <CustomerDetails />
+          <div
+            style={{
+              margin: "1rem",
+            }}
+          >
+            <h3>Total €: {totalAmount}</h3>
+            <Button onClick={placeOrder}>Place order and pay cash later</Button>
+          </div>
         </div>
-      </Container>
-      <Container>
-        <CustomerDetails />
-        <p>Total €: {totalAmount}</p>
-        <Button onClick={placeOrder}>Place order</Button>
-        <h2> {order}</h2>
-      </Container>
+        <div class="col-md-8">
+          {order === "" ? <h2>My cart:</h2> : <h2>{order}</h2>}
+          <div class="container" style={{ display: "flex", flexWrap: "wrap" }}>
+            {shoppingCart.map((cart) => {
+              return (
+                <div class="row">
+                  <div
+                    class="col-md-4"
+                    style={{
+                      margin: "1rem",
+                    }}
+                  >
+                    <CartItem
+                      key={cart.id}
+                      service={cart.service.name}
+                      price={cart.service.price}
+                      image={cart.service.imageUrl}
+                      quantity={cart.quantity}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
