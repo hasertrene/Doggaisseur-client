@@ -32,7 +32,6 @@ export default function Checkout() {
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h2>{order}</h2>
           <CustomerDetails />
           <div
             style={{
@@ -44,7 +43,7 @@ export default function Checkout() {
           </div>
         </div>
         <div class="col-md-8">
-          <h1>My cart:</h1>
+          {order === "" ? <h2>My cart:</h2> : <h2>{order}</h2>}
           <div class="container" style={{ display: "flex", flexWrap: "wrap" }}>
             {shoppingCart.map((cart) => {
               return (
