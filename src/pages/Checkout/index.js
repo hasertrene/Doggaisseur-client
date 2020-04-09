@@ -4,7 +4,10 @@ import {
   fetchShoppingCartById,
   orderPlaced,
 } from "../../store/shoppingcart/actions";
-import { selectShoppingCart } from "../../store/shoppingcart/selectors";
+import {
+  selectShoppingCart,
+  selectTotalAmount,
+} from "../../store/shoppingcart/selectors";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import CustomerDetails from "../../components/CustomerDetails";
@@ -14,6 +17,7 @@ export default function Checkout() {
   const [order, setOrder] = useState("");
   const dispatch = useDispatch();
   const shoppingCart = useSelector(selectShoppingCart);
+  const totalAmount = useSelector(selectTotalAmount);
 
   useEffect(() => {
     dispatch(fetchShoppingCartById());
@@ -26,27 +30,30 @@ export default function Checkout() {
 
   return (
     <div>
-      <h1>Checkout Page, awesome!</h1>
+      <h1>What's in my cart:</h1>
       <Container>
-        What's in my cart:
-        {shoppingCart.map((cart) => {
-          return (
-            <CartItem
-              key={cart.id}
-              service={cart.service.name}
-              price={cart.service.price}
-              image={cart.service.imageUrl}
-              quantity={cart.quantity}
-            />
-          );
-        })}
-        Total €:
+        <div class="row">
+          {shoppingCart.map((cart) => {
+            return (
+              <div class="col-sm-4">
+                <CartItem
+                  key={cart.id}
+                  service={cart.service.name}
+                  price={cart.service.price}
+                  image={cart.service.imageUrl}
+                  quantity={cart.quantity}
+                />
+              </div>
+            );
+          })}
+        </div>
       </Container>
       <Container>
         <CustomerDetails />
+        <p>Total €: {totalAmount}</p>
+        <Button onClick={placeOrder}>Place order</Button>
+        <h2> {order}</h2>
       </Container>
-      <Button onClick={placeOrder}>Place order</Button>
-      <h2> {order}</h2>
     </div>
   );
 }
