@@ -17,7 +17,7 @@ export default function LoggedIn() {
 
   useEffect(() => {
     dispatch(fetchShoppingCartById());
-  }, [dispatch, cartItems]);
+  }, [dispatch]);
 
   return (
     <>
