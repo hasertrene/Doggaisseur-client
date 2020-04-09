@@ -11,12 +11,18 @@ import CustomerDetails from "../../components/CustomerDetails";
 import CartItem from "../../components/CartItem";
 
 export default function Checkout() {
+  const [order, setOrder] = useState("");
   const dispatch = useDispatch();
   const shoppingCart = useSelector(selectShoppingCart);
 
   useEffect(() => {
     dispatch(fetchShoppingCartById());
   }, [dispatch]);
+
+  const placeOrder = () => {
+    dispatch(orderPlaced());
+    setOrder("Thank you for ordering!");
+  };
 
   return (
     <div>
@@ -39,7 +45,8 @@ export default function Checkout() {
       <Container>
         <CustomerDetails />
       </Container>
-      <Button onClick={() => dispatch(orderPlaced())}>Place order</Button>
+      <Button onClick={placeOrder}>Place order</Button>
+      <h2> {order}</h2>
     </div>
   );
 }
