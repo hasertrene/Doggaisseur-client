@@ -40,7 +40,7 @@ export default function Checkout() {
             }}
           >
             <h3>Total €: {totalAmount}</h3>
-            <Button onClick={placeOrder}>Place order</Button>
+            <Button onClick={placeOrder}>Place order and pay cash later</Button>
           </div>
         </div>
         <div class="col-md-8">
