@@ -8,7 +8,7 @@ import { selectServices } from "../store/services/selectors";
 
 export default function ServicesPage() {
   const services = useSelector(selectServices);
-  const [order, setOrder] = useState(services);
+  const [order, setOrder] = useState(false);
   console.log("order", order);
   const categories = [
     ...new Set(services.map((service) => service.category.name)),
@@ -35,11 +35,12 @@ export default function ServicesPage() {
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
-  //console.log("filters", filters);
+
+  const sort = !order ? (a, b) => b.price - a.price : (a, b) => a.price - b.price
+  
   const filterServices = services.filter((service) =>
     filters.includes(service.category.name)
-  );
-  //console.log("filtered services", filterServices);
+  ).sort(sort);
 
   const handleChange = (event) => {
     setChecked({ ...isChecked, [event.target.name]: event.target.checked });
@@ -48,8 +49,9 @@ export default function ServicesPage() {
       : setFilters(filters.filter((filter) => filter !== event.target.name));
   };
 
-  const sortHigher = services.sort((b, a) => a.price - b.price);
-  const sortLower = services.sort((a, b) => a.price - b.price);
+
+
+  
   return (
     <>
       <h1></h1>
@@ -78,10 +80,11 @@ export default function ServicesPage() {
                 ))}
                 <br />
                 <label for="cars">Order by price: </label>
-                <select id="prices">
-                  <option value="select">select</option>
-                  <option value="higher">Higher to lower</option>
-                  <option value="lower" onChange={() => setOrder(sortLower)}>
+                <select id="prices" onChange={() => setOrder(!order)}>
+                  <option value="higher" name="high">
+                  Higher to lower
+                  </option>
+                  <option value="lower" name="low" >
                     Lower to higher
                   </option>
                 </select>
@@ -99,7 +102,8 @@ export default function ServicesPage() {
                   id={service.id}
                 />
               </Container>
-            ))}
+            ))
+            }
           </div>
         </div>
       </div>
