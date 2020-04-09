@@ -32,33 +32,44 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Jumbotron>
-        <h1>Home</h1>
-      </Jumbotron>
-      {categories.map((category) => (
-        <form>
-          <label>
-            {category}{" "}
-            <input
-              name={category}
-              type="checkbox"
-              checked={isChecked[category]}
-              onChange={handleChange}
-            />
-          </label>
-        </form>
-      ))}
-      {filterServices.map((service) => (
-        <Container key={service.id}>
-          <Service
-            name={service.name}
-            description={service.description}
-            imageUrl={service.imageUrl}
-            price={service.price}
-            id={service.id}
-          />
-        </Container>
-      ))}
+      <h1></h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="position-fixed">
+              <Jumbotron>
+                <h3>Choose category:</h3>
+                {categories.map((category) => (
+                  <form>
+                    <label>
+                      {category}{" "}
+                      <input
+                        name={category}
+                        type="checkbox"
+                        checked={isChecked[category]}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </form>
+                ))}
+              </Jumbotron>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            {filterServices.map((service) => (
+              <Container key={service.id}>
+                <Service
+                  name={service.name}
+                  description={service.description}
+                  imageUrl={service.imageUrl}
+                  price={service.price}
+                  id={service.id}
+                />
+              </Container>
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
