@@ -34,11 +34,8 @@ export default function Service(props) {
           <Button
             style={{ marginBottom: "1rem" }}
             variant="success"
-            onClick={() => dispatch(addService(props.id, 1))}
+            onClick={handleClick}
           >
-            Add to cart
-          <p>€ {props.price}</p>
-          <Button variant="success" onClick={handleClick}>
             {select}
           </Button>
         </div>
