@@ -53,7 +53,7 @@ export default function ServicesPage() {
         <div class="row">
           <div class="col-sm-4">
             <div className="position-fixed">
-              <Jumbotron>
+              <Jumbotron style={{ backgroundColor: "rgba(239,255,222, 0.6)" }}>
                 <h3>Choose category:</h3>
                 {categories.map((category) => (
                   <form key={category.id}>
